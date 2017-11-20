@@ -28,7 +28,7 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder Int
 decoder =
-    fail "tum tum tummmmm"
+    Json.Decode.field "age" Json.Decode.int
 
 
 

@@ -1,6 +1,6 @@
 module Exercise05 exposing (decoder)
 
-import Json.Decode exposing (fail, Decoder)
+import Json.Decode as Decode exposing (fail, Decoder)
 
 
 {- Now that you know how to create a decoder which includes calling a function
@@ -28,8 +28,12 @@ import Json.Decode exposing (fail, Decoder)
 
 decoder : Decoder String
 decoder =
-    fail "Implement me!"
+    Decode.field "repeat" Decode.int
+        |> Decode.andThen repeatString
 
+repeatString : Int -> Decoder String
+repeatString times =
+    Decode.map (String.repeat times) (Decode.field "term" Decode.string)
 
 
 {- Once you think you're done, run the tests for this exercise from the root of

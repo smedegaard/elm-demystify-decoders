@@ -21,7 +21,7 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder (List String)
 decoder =
-    fail "I still need to be implemented!"
+    Json.Decode.list Json.Decode.string
 
 
 

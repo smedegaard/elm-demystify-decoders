@@ -25,7 +25,7 @@ import Json.Decode exposing (Decoder, fail)
 
 decoder : Decoder Int
 decoder =
-    fail "I always fail!"
+    Json.Decode.int
 
 
 
