@@ -1,6 +1,6 @@
 module Exercise06 exposing (decoder, Person)
 
-import Json.Decode exposing (fail, Decoder)
+import Json.Decode exposing (fail, Decoder, int, string, field, map2)
 
 
 {- Now, onto the "real" stuff: decoding a JS object into an Elm record.
@@ -50,7 +50,9 @@ type alias Person =
 
 decoder : Decoder Person
 decoder =
-    fail "Implement me!"
+    map2 Person
+      (field "name" string)
+      (field "age" int)
 
 
 
