@@ -28,13 +28,9 @@ import Json.Decode as Decode exposing (fail, Decoder)
 
 decoder : Decoder String
 decoder =
-    Decode.field "repeat" Decode.int
-        |> Decode.andThen repeatString
-
-repeatString : Int -> Decoder String
-repeatString times =
-    Decode.map (String.repeat times) (Decode.field "term" Decode.string)
-
+    Decode.map2 String.repeat
+      (Decode.field "repeat" Decode.int)
+      (Decode.field "term" Decode.string)
 
 {- Once you think you're done, run the tests for this exercise from the root of
    the project:
